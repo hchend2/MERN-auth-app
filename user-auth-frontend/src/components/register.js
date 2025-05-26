@@ -10,17 +10,16 @@ const Register = () => {
     firstname: '',
     lastname: '',
     email: '',
-    username: '',
     password: '',
     confirmPassword: ''
   });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState(''); // State to hold error messages
+  const navigate = useNavigate(); // Hook to programmatically navigate
 
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value }); // Update form data state
   };
 
   // Handle form submission
@@ -29,14 +28,15 @@ const Register = () => {
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
-    }
+    } // Check if passwords match
+    setError(''); // Clear any previous error messages
     
-    try {
+    try { // Send registration request to the backend
       await axios.post('/api/register', formData);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
-    }
+    } // Handle errors during registration
   };
 
   return (
@@ -46,10 +46,10 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" name="firtname" placeholder="Firstname"   value={formData.firstname} onChange={handleChange} required/>
         <input type="text" name="lastname" placeholder="Lastname"     value={formData.lastname} onChange={handleChange} required/>
-        <input type="text" name="username" placeholder="Username"     value={formData.username} onChange={handleChange} required/>
         <input type="email" name="email" placeholder="Email"             value={formData.email} onChange={handleChange} required/>
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required/>
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required/>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" 
+                                                               value={formData.confirmPassword} onChange={handleChange} required/>
         <button type="submit">Register</button>
       </form>
       <p>Already have an account? <a href="/login">Login</a></p>
