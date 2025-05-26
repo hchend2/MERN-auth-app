@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+
+// File: user-auth-frontend/src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
-function App() {
+
+// This is the main App component that sets up the routes for the application
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={ localStorage.getItem('token') ? 
+            <Dashboard /> : <Navigate to="/login" replace/>}/> // Redirect to login if no token is found
+          <Route path="/" element={<Login />} /> {/* Default route */} // Redirect to login if no path matches
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 export default App;

@@ -1,4 +1,5 @@
-// dashboard.js
+
+// File: user-auth-frontend/src/components/dashboard.js
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
