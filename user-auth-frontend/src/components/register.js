@@ -46,12 +46,11 @@ const Register = () => {
       <h2>Register</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="firtname" placeholder="Firstname"   value={formData.firstname} onChange={handleChange} required/>
-        <input type="text" name="lastname" placeholder="Lastname"     value={formData.lastname} onChange={handleChange} required/>
-        <input type="email" name="email" placeholder="Email"             value={formData.email} onChange={handleChange} required/>
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required/>
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" 
-                                                               value={formData.confirmPassword} onChange={handleChange} required/>
+        <input type="text" name="firstname" placeholder="Firstname" value={formData.firstname} onChange={handleChange} required />
+        <input type="text" name="lastname" placeholder="Lastname" value={formData.lastname} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
         <button type="submit">Register</button>
       </form>
       <p>Already have an account? <a href="/login">Login</a></p>
