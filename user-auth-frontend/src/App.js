@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './components/login';
 import Register from './components/register';
 import Dashboard from './components/dashboard';
-import './App.css';
+// import './App.css';
 
 
 // This is the main App component that sets up the routes for the application

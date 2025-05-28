@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
+const API_URL = 'http://localhost:5000/api/login'; // Define the API URL for login
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,7 +17,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { // API endpoint for login
+      const response = await axios.post(API_URL , { // API endpoint for login
         email,
         password,
       }); // Send login request to the backend

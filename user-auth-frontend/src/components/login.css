@@ -23,7 +23,7 @@ body {
 
 .login-container h2 {
   margin-bottom: 1.5rem;
-  color: #ff69b4;
+  color: #00bcd4;
   font-size: 2rem;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 .login-container button {
-  background-color: #4db8ff;
+  background-color: #00bcd4;
   color: white;
   padding: 12px;
   border: none;
@@ -50,7 +50,7 @@ body {
 }
 
 .login-container button:hover {
-  background-color: #3399ff;
+  background-color: #0097a7;
 }
 
 .login-container .error {

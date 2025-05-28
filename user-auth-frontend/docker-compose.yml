@@ -1,0 +1,14 @@
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Expose port 80 of the container to port 3000 on the host
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api # Set the API URL for the frontend to communicate with the backend
+    networks:
+      - user-auth-network # Connect to the user-auth-network for communication with the backend
+networks:
+  user-auth-network:

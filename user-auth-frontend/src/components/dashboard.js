@@ -1,11 +1,19 @@
 
 // File: user-auth-frontend/src/components/dashboard.js
 
+// This component displays the user's dashboard after successful login
+// It fetches user data from the backend and displays it
+// It also provides a logout button that clears the token and redirects to the login page
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './dashboard.css';
 // This component displays the user's dashboard after successful login
+
+
+const API_URL = 'http://localhost:5000/api/user'; // Define the API URL for fetching user data
+
 
 const Dashboard = () => {
   const [user, setUser] = useState(null); // State to hold user data
@@ -19,7 +27,7 @@ const Dashboard = () => {
         navigate('/login'); // Redirect to login if no token is found
         return;
       }
-      const response = await axios.get('http://localhost:5000/api/user', { // API endpoint to get user data
+      const response = await axios.get(API_URL, { // API endpoint to get user data
         headers: { Authorization: `Bearer ${token}` }, // Include token in request headers
       });
       setUser(response.data); // Set user data in state
@@ -47,6 +55,3 @@ const Dashboard = () => {
   );
 }
 export default Dashboard;
-// This component displays the user's dashboard after successful login
-// It fetches user data from the backend and displays it
-// It also provides a logout button that clears the token and redirects to the login page
