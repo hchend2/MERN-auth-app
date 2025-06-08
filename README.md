@@ -1,1 +1,1 @@
-# React-Node-Mongodb-user-auth-app-frontend
+# MERN-auth-app-frontend
