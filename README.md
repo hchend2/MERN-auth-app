@@ -1,1 +1,1 @@
-# MERN-auth-app-frontend
+# MERN-auth-app
