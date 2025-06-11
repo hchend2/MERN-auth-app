@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const {registerValidation, loginValidation} = require('../validation');
 
@@ -27,8 +27,10 @@ router.post('/register', async (req, res) => {
         email: req.body.email,
         password: hashedPassword
     });
-    // Validate the user data before saving
-    // Check if all fields are filled and valid
+    // // Validate the user data before saving
+    // // Check if all fields are filled and valid
+
+    
     if (!user.firstname || !user.lastname || !user.email || !user.password) {
         return res.status(400).send('All fields are required');
     }
@@ -44,6 +46,7 @@ router.post('/register', async (req, res) => {
     if (!/^[a-zA-Z]+$/.test(user.firstname) || !/^[a-zA-Z]+$/.test(user.lastname)) {
         return res.status(400).send('First name and last name must contain only letters');
     }
+
     // If all validations pass, save the user to the database
     // and return the user ID
     // If there's an error, send a 400 status code
