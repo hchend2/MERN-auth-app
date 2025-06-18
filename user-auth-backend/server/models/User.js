@@ -1,6 +1,6 @@
 // server/models/User.js
+import mongoose from 'mongoose';
 
-const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -23,9 +23,9 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 8
+        minlength: 3
     }
 }, { timestamps: true });
 
-const User = mongoose.model('User', UserSchema);
-module.exports = User;
+const User = mongoose.models.user || mongoose.model('User', UserSchema);
+export default User;

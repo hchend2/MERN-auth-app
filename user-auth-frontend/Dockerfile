@@ -1,32 +1,23 @@
+FROM node:20
 
+# # Set the working directory
+# WORKDIR /app
 
-FROM node:18-alpine
+# # Copy package.json and package-lock.json
+# COPY package*.json ./
 
-# Set the working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
+# # Install dependencies
 # RUN npm install
 
-# Copy the rest of the application code
-COPY . .
+# # Copy the rest of the application code
+# COPY  src ./src
+# COPY public ./public
 
-# Build the React application
-RUN npm run build
+# # Build the React application
+# RUN npm run build
 
-FROM nginx:alpine
+# # Expose the port the app runs on
+# EXPOSE 3000
 
-# Copy the built React app to the Nginx HTML directory
-COPY --from=0 /app/build /usr/share/nginx/html
-
-# Copy the Nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose the port Nginx runs on
-EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# # Start the application
+# CMD ["npm", "start"]

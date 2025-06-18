@@ -1,14 +1,22 @@
-
-services:
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:80" # Expose port 80 of the container to port 3000 on the host
-    environment:
-      - REACT_APP_API_URL=http://localhost:5000/api # Set the API URL for the frontend to communicate with the backend
-    networks:
-      - user-auth-network # Connect to the user-auth-network for communication with the backend
-networks:
-  user-auth-network:
+# services:
+#   user-auth-frontend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: mern-auth-frontend
+#     environment:
+#       API_URL: http://localhost:5000/api
+#     hostname: user-auth-frontend
+#     image: user-auth/web:latest
+#     networks:
+#       - user_auth_app_network
+#     ports:
+#       - mode: ingress
+#         target: 3000
+#         published: 8080
+#         protocol: tcp
+#     restart: unless-stopped
+# networks:
+#   user_auth_app_network:
+#     name: user_auth_app_network
+#     # external: true
