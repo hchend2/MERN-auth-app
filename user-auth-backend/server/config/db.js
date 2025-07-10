@@ -1,12 +1,14 @@
-
+// 
+// File: user-auth-backend/server/config/db.js
+// 
 import mongoose from "mongoose";
-
+import dotenv from "dotenv"
+dotenv.config(); // load environment varible from the .env file ...
 
 async function connectToDB() {
-  const dbConnect_PORT = process.env.DB_CONNECT || "mongodb://localhost:27017/usersdb";
     try {
-        const connect = await mongoose.connect(dbConnect_PORT);
-        console.log("Connected to MongoDB", connect.connection.host);
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("MongoDB connection established successfully");
     } catch (error) {
         console.error("Error connecting to MongoDB:", error.message);
         process.exit(1); // Exit the process with failure
