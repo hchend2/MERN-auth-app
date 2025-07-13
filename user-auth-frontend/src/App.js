@@ -1,6 +1,6 @@
-
+//
 // File: user-auth-frontend/src/App.js
-
+//
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/login';
@@ -8,10 +8,7 @@ import Register from './components/register';
 import Dashboard from './components/dashboard';
 // import './App.css';
 
-
 // This is the main App component that sets up the routes for the application
-
-
 const App = () => {
   return (
     <Router>
@@ -20,8 +17,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={ localStorage.getItem('token') ? 
-            <Dashboard /> : <Navigate to="/login" replace/>}/> // Redirect to login if no token is found
-          <Route path="/" element={<Login />} /> {/* Default route */} // Redirect to login if no path matches
+            <Dashboard /> : <Navigate to="/login" replace/>}/> 
+          <Route path="/" element={<Login />} /> {/* Default route */} 
         </Routes>
       </div>
     </Router>
