@@ -12,6 +12,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+// to test if the server is running ...
+app.get('/', (req, res) => {
+  res.send('Welcome to the User Authentication Backend!');
+});
+
 // Middleware
 app.use(cors({
   origin: 'http://localhost:3000', // this is the port on which the react front-end runs ...
@@ -19,7 +24,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
 
 app.use('/auth', authRoutes);
 

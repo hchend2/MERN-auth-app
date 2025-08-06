@@ -1,0 +1,23 @@
+# 
+# File: user-auth-backend/server/Dockerfile ...
+# 
+FROM  node:20-alpine
+
+# Set the working directory ...
+WORKDIR /app 
+
+#  Copy package.json and package-lock.json to the working directory ...
+COPY server/package*.json ./
+
+# Install dependencies ...
+RUN npm install --production
+
+
+# Copy the rest of the application code to the working directory ...
+COPY server/. .
+
+# Expose the application port ...
+EXPOSE 5000
+
+# Start the application ...
+CMD ["node", "server.js"]
