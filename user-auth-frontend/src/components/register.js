@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './register.css';
 
+
+const API_URL = process.env.REACT_APP_API_URL; // Base URL for API requests ...
+
 // This component handles user registration ...
 const Register = () => {
   
@@ -24,7 +27,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/register',
+      const response = await axios.post(`${API_URL}/auth/register`, // API endpoint for registration ...
         {
         firstname,
         lastname,
@@ -53,6 +56,7 @@ const Register = () => {
     }
   };
 
+  // Handle input changes ...
   const handleChange = (e) => {
     const { name, value } = e.target;
     

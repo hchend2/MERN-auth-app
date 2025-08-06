@@ -1,22 +1,14 @@
-# services:
-#   user-auth-frontend:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: mern-auth-frontend
-#     environment:
-#       API_URL: http://localhost:5000/api
-#     hostname: user-auth-frontend
-#     image: user-auth/web:latest
-#     networks:
-#       - user_auth_app_network
-#     ports:
-#       - mode: ingress
-#         target: 3000
-#         published: 8080
-#         protocol: tcp
-#     restart: unless-stopped
-# networks:
-#   user_auth_app_network:
-#     name: user_auth_app_network
-#     # external: true
+# 
+# File: user-auth-frontend/docker-compose.yml
+# 
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: http://localhost:5000
+    container_name: auth-frontend
+    ports:
+      - "3000:80"
+    image: auth-frontend/frontend:latest
